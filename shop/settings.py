@@ -139,3 +139,4 @@ LOGIN_REDIRECT_URL = '/'
 # CRISPY FORMS
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+SECRET_KEY = 'pjp%-3y8fmx*_hx5)i(8r7(odop5t_tb-g69cxu#j2609+&+p@'
