@@ -2,8 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ab8c8e9-3ac4-46ce-af97-c8e0ec478680" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Bold.eot" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Bold.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Bold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Bold.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Bold.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Bold.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Bold.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Bold.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Light.eot" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Light.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Light.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Light.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Light.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Light.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Light.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Light.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Medium.eot" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Medium.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Medium.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Medium.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Medium.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Medium.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Medium.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Medium.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Regular.eot" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Regular.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Regular.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Regular.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Regular.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Regular.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Thin.eot" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Thin.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Thin.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Thin.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Thin.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Thin.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/font/roboto/Roboto-Thin.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/roboto/Roboto-Thin.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,13 +45,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Tq6I5PzOrIP7gRJEVUWbcUswiL" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ecommerce" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -36,6 +70,29 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="shop" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../.virtualenvs/shop/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -55,7 +112,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
