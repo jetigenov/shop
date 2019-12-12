@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block content %}
  <main>
@@ -19,21 +20,23 @@
     <tbody>
     {% for order_item in object.items.all %}
       <tr>
-        <th scope="row">1</th>
+        <th scope="row">{{ forloop.counter }}</th>
         <td>{{ order_item.item.title }}</td>
         <td>{{ order_item.item.price }}</td>
         <td>{{ order_item.quantity }}</td>
         <td>
             {% if order_item.item.discount_price %}
                 ${{ order_item.get_total_discount_item_price }}
-                (Saving ${{order_item.get_amount_saved}})
-            {% else %}
+               <span class = "badge badge-primary"> (Saving ${{order_item.get_amount_saved}})
+                   {% else %}</span>
                 ${{ order_item.get_total_item_price }}
             {% endif %}
         </td>
       </tr>
-
     {% endfor %}
+        <td colspan="4"><b>Order Total</b></td>
+        <td>${{object.get_total}}</td>
+
     </tbody>
   </table>
 
