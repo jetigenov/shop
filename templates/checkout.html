@@ -1,25 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% load crispy_forms_tags %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Checkout</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
-  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
-</head>
 
 <body class="grey lighten-3">
 
@@ -49,18 +31,7 @@
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
         </ul>
-
       </div>
 
     </div>
@@ -82,20 +53,31 @@
 
           <!--Card-->
           <div class="card">
-
+                <form>
+                  {% csrf_token %}
+                  {{ form|crispy}}
+                    <button class='btn btn-primary' type='submit'>Checkout</button>
+                </form>
             <!--Card content-->
             <form class="card-body">
 
 
               <!--address-->
               <div class="md-form mb-5">
+<!--
                 <input type="text" id="address" class="form-control" placeholder="1234 Main St">
+
+-->
+                {{ form.street_address }}
                 <label for="address" class=""></label>
               </div>
 
               <!--address-2-->
               <div class="md-form mb-5">
+<!--
                 <input type="text" id="address-2" class="form-control" placeholder="Apartment or suite">
+-->
+                {{ form.apartment_address }}
                 <label for="address-2" class=""></label>
               </div>
 
@@ -106,10 +88,11 @@
                 <div class="col-lg-4 col-md-12 mb-4">
 
                   <label for="country">Country</label>
-                  <select class="custom-select d-block w-100" id="country" required>
+                  <!--<select class="custom-select d-block w-100" id="country" required>
                     <option value="">Choose...</option>
                     <option>United States</option>
-                  </select>
+                  </select>-->
+                  {{ form.country }}
                   <div class="invalid-feedback">
                     Please select a valid country.
                   </div>
@@ -121,7 +104,10 @@
                 <div class="col-lg-4 col-md-6 mb-4">
 
                   <label for="zip">Zip</label>
+<!--
                   <input type="text" class="form-control" id="zip" placeholder="" required>
+-->
+                  {{form.zip}}
                   <div class="invalid-feedback">
                     Zip code required.
                   </div>
@@ -135,25 +121,33 @@
               <hr>
 
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="same-address">
+                <input {% if form.same_billing_address %}checked{% endif %} type = "checkbox" class="custom-control-input" id="same-address">
+                {{form.same_billing_address}}
                 <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
               </div>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="save-info">
+                <input {% if form.save_info %}checked{% endif %} type="checkbox" class="custom-control-input" id="save-info">
+                {{form.save_info}}
                 <label class="custom-control-label" for="save-info">Save this information for next time</label>
               </div>
 
               <hr>
 
               <div class="d-block my-3">
+                {% for value, name in form.fields.payment_option.choices %}
                 <div class="custom-control custom-radio">
-                  <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                  <label class="custom-control-label" for="credit">Stripe</label>
+                  <input id="{{ name }}" name="payment" type="radio" class="custom-control-input" required>
+                  <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
+<!--
+                  {{ form.payment_option }}
+-->
+
                 </div>
-                <div class="custom-control custom-radio">
+                {% endfor %}
+                <!--<div class="custom-control custom-radio">
                   <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
                   <label class="custom-control-label" for="paypal">Paypal</label>
-                </div>
+                </div>-->
               </div>
 
               <hr class="mb-4">
@@ -241,20 +235,6 @@
   </footer>
   <!--/.Footer-->
 
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="{% static 'js/bootstrap.min.js'%}"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
-  <!-- Initializations -->
-  <script type="text/javascript">
-    // Animations initialization
-    new WOW().init();
-  </script>
 </body>
 
 </html>
