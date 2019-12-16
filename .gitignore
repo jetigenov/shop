@@ -10,6 +10,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media
+/media_root
 media_root
 include
 pyvenv.cfg
@@ -17,8 +18,6 @@ pyvenv.cfg
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
 /.idea
-
-/todo/static/
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
 *.py[cod]
