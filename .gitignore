@@ -18,7 +18,7 @@ pyvenv.cfg
 /.idea
 
 /todo/static/
-
+/media_root
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
 *.py[cod]
