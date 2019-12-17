@@ -61,6 +61,9 @@ class CheckoutView(View):
             return redirect("core:order-summary")
 
 
+class PaymentView(View):
+    def get(self, *args, **kwargs):
+        return render(self.request, "payment.html")
 
 
 class HomeView(ListView):
