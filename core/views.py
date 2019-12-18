@@ -12,8 +12,14 @@ from django.utils import timezone
 from .forms import CheckoutForm, CouponForm
 from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon
 
+import random
+import string
 import stripe
 stripe.api_key = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+
+
+def create_ref_code():
+    return ''.join(random.choice(string.ascii_lowercase + string.digits, k=20))
 
 
 def products(request):
@@ -120,6 +126,8 @@ class PaymentView(View):
 
             order.ordered = True
             order.payment = payment
+            # Todo: assign ref code
+            order.ref_code = create_ref_code()
             order.save()
 
 
