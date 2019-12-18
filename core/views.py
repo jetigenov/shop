@@ -74,7 +74,6 @@ class PaymentView(View):
             'order': order
         }
         return render(self.request, "payment.html", context)
-
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
         token = self.request.POST.get('stripeToken')
@@ -87,6 +86,10 @@ class PaymentView(View):
                 source=token
             )
 
+            order_items = order.items.all()
+            order_items.update(ordered=True)
+            for item in order_items:
+                item.save()
             order.ordered = True
 
             # create the payment
