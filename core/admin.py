@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import Item, OrderItem, Order, Payment, Coupon
+from .models import Item, OrderItem, Order, Payment, Coupon, Refund
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['user',
@@ -27,6 +27,11 @@ class OrderAdmin(admin.ModelAdmin):
                     'received',
                     'refund_requested',
                     'refund_granted']
+
+    search_fields = [
+        'user__username',
+        'ref_code'
+    ]
 
 
 admin.site.register(Item)

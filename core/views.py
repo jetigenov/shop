@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.conf import settings
 from django.contrib import messages
@@ -15,6 +14,7 @@ from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon
 import random
 import string
 import stripe
+
 stripe.api_key = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
 
@@ -27,7 +27,6 @@ def products(request):
         'items': Item.objects.all()
     }
     return render(request, "product.html", context)
-
 
 
 class CheckoutView(View):
@@ -47,7 +46,6 @@ class CheckoutView(View):
         except ObjectDoesNotExist:
             messages.info(self.request, "You do not have an active order")
             return redirect("core:checkout")
-
 
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
@@ -91,7 +89,7 @@ class PaymentView(View):
             context = {
                 'order': order,
                 'DISPLAY_COUPON_FORM': False
-             }
+            }
             return render(self.request, "payment.html", context)
         else:
             messages.warning(self.request, "Yoy have not added a billing address")
@@ -129,7 +127,6 @@ class PaymentView(View):
             # Todo: assign ref code
             order.ref_code = create_ref_code()
             order.save()
-
 
             messages.success(self.request, "Your order was successful!")
             return redirect("/")
@@ -179,13 +176,10 @@ class PaymentView(View):
             pass
 
 
-
 class HomeView(ListView):
     model = Item
     paginate_by = 10
     template_name = "home.html"
-
-
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
@@ -200,9 +194,11 @@ class OrderSummaryView(LoginRequiredMixin, View):
             messages.warning(self.request, "You don not have an active order")
             return redirect("/")
 
+
 class ItemDetailView(DetailView):
     model = Item
     template_name = "product.html"
+
 
 @login_required
 def add_to_cart(request, slug):
@@ -261,7 +257,6 @@ def remove_from_cart(request, slug):
         return redirect("core:product", slug=slug)
 
 
-
 @login_required
 def remove_single_item_from_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
@@ -293,9 +288,6 @@ def remove_single_item_from_cart(request, slug):
         return redirect("core:product", slug=slug)
 
 
-
-
-
 def get_coupon(request, code):
     try:
         coupon = Coupon.objects.get(code=code)
@@ -303,8 +295,6 @@ def get_coupon(request, code):
     except ObjectDoesNotExist:
         messages.info(request, "This coupon does not exist")
         return redirect("core:checkout")
-
-
 
 
 class AddCouponView(View):
@@ -322,5 +312,38 @@ class AddCouponView(View):
                 messages.info(self.request, "You do not have an active order")
                 return redirect("core:checkout")
 
-    # Todo: raise error
-        return None
+
+
+class RequestRefundView(View):
+    def get(self, *args, **kwargs):
+        form = RefundForm()
+        context = {
+            'form': form
+        }
+        return render(self.request, "request_refund.html", context)
+
+    def post(self, *args, **kwargs):
+        form = RefundForm(self.request.POST)
+        if form.is_valid():
+            ref_code = form.cleaned_data.get('ref_code')
+            message = form.cleaned_data.get('message')
+            email = form.cleaned_data.get('email')
+            # edit the order
+            try:
+                order = Order.objects.get(ref_code=ref_code)
+                order.refund_requested = True
+                order.save()
+
+                # store the refund
+                refund = Refund()
+                refund.order = order
+                refund.reason = message
+                refund.email = email
+                refund.save()
+
+                messages.info(self.request, "Your request was received.")
+                return redirect("core:request-refund")
+
+            except ObjectDoesNotExist:
+                messages.info(self.request, "This order does not exist.")
+                return redirect("core:request-refund")
