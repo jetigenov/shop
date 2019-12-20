@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import Item, OrderItem, Order, Payment, Coupon, Refund
+from .models import Item, OrderItem, Order, Payment, Coupon, Refund, Address
 
 def make_refund_accepted(modeladmin, request, queryset):
     queryset.update(refund_requested=False, refund_granted=True)
@@ -17,6 +17,7 @@ class OrderAdmin(admin.ModelAdmin):
                     'refund_requested',
                     'refund_granted',
                     'billing_address',
+                    'shipping_address',
                     'payment',
                     'coupon']
     list_display_links = [
@@ -45,6 +46,11 @@ admin.site.register(OrderItem)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Payment)
 admin.site.register(Coupon)
+admin.site.register(Refund)
+admin.site.register(Address)
+
+
+
 
 
 # Register your models here.
