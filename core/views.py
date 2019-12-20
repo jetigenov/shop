@@ -41,6 +41,24 @@ class CheckoutView(View):
                 'DISPLAY_COUPON_FORM': True
 
             }
+
+            shipping_address_qs = Address.objects.filter(
+                user=self.request.user,
+                address_type='S',
+                default=True
+            )
+            if shipping_address_qs.exist():
+                context.update({ 'default_shipping_address': shipping_address_qs[0] })
+
+            billing_address_qs = Address.objects.filter(
+                user=self.request.user,
+                address_type='B',
+                default=True
+            )
+            if billing_address_qs.exist():
+                context.update({'default_billing_address': billing_address_qs[0]})
+
+
             return render(self.request, "checkout.html", context)
 
         except ObjectDoesNotExist:
@@ -56,8 +74,6 @@ class CheckoutView(View):
                 apartment_address = form.cleaned_data.get('apartment_address')
                 country = form.cleaned_data.get('country')
                 zip = form.cleaned_data.get('zip')
-                # same_shipping_address = form.cleaned_data.get('same_shipping_address')
-                # save_info = form.cleaned_data.get('save_info')
                 payment_option = form.cleaned_data.get('payment_option')
                 billing_address = Address(
                     user=self.request.user,
